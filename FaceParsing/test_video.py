@@ -13,7 +13,7 @@ def read_camera(args):
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = int(cap.get(cv2.CAP_PROP_FPS))  # 视频的平均帧率
-    predictor = Inference(device=args.device)
+    predictor = Inference(device=args.device, use_onnx=args.use_onnx)
     start_time = time.time()
     count = 0  # 帧数计数
     while True:
@@ -37,8 +37,9 @@ def read_camera(args):
 
 def get_parser():
     parse = argparse.ArgumentParser()
-    parse.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda', 'cuda:0', 'cuda:1'])
-    parse.add_argument('--mode', type=int, default=1, choices=[0, 1, 2, 3, 4])
+    parse.add_argument('--device', type=str, default='cpu', choices=['cpu', 'cuda', 'cuda:0', 'cuda:1'])
+    parse.add_argument('--mode', type=int, default=0, choices=[0, 1, 2, 3, 4])
+    parse.add_argument('--use_onnx', type=bool, default=False)
     return parse.parse_args()
 
 if __name__ == '__main__':

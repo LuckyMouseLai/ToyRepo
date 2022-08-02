@@ -4,6 +4,7 @@ import torch
 import numpy as np
 from skimage.filters import gaussian
 from torchvision import transforms
+import onnxruntime
 
 from network import BiSeNet
 
@@ -11,10 +12,16 @@ from network import BiSeNet
 atts = ['skin', 'l_brow', 'r_brow', 'l_eye', 'r_eye', 'eye_g', 'l_ear', 'r_ear', 'ear_r',
             'nose', 'mouth', 'u_lip', 'l_lip', 'neck', 'neck_l', 'cloth', 'hair', 'hat']
 class Inference():
-    def __init__(self, device) -> None:
+    def __init__(self, device, use_onnx) -> None:
         self.device = device
+        self.use_onnx = use_onnx
+        if device == 'cpu':
+            self.session = onnxruntime.InferenceSession('./checkpoints/79999_iter.onnx', providers=['CPUExecutionProvider'])
+        else:
+            self.session = onnxruntime.InferenceSession('./checkpoints/79999_iter.onnx', providers=['CUDAExecutionProvider'])
+
         self.model = BiSeNet(n_classes=19).to(self.device)
-        self.model.load_state_dict(torch.load('../../checkpoints/79999_iter.pth'))
+        self.model.load_state_dict(torch.load('./checkpoints/79999_iter.pth'))
         self.to_tensor = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
@@ -101,12 +108,20 @@ class Inference():
 
         return changed
 
+    def mosaic(self, image, parsing):
+        
+        pass
+    
     ## image: BGR
     def inference(self, image, mode):
         with torch.no_grad():
             self.model.eval()
             input, image_BGR = self.preprocess(image=image)  # input：1*3*512*512， image_BGR: 512*512*3
-            output = self.model(input.to(self.device))[0]  # output: 1*19*512*512   19为类别数，下面取每个位置上的最大值
+            if self.use_onnx:
+                output = self.session.run(['output_0'], input_feed={'input_0': input.numpy()})
+                output = torch.tensor(output[0])
+            else:
+                output = self.model(input.to(self.device))  # output: 1*19*512*512   19为类别数，下面取每个位置上的最大值
             parsing = output.squeeze(0).cpu().numpy().argmax(0)  # parsing: (512* 512) 
             ### 根据mode返回不同的图片
             if mode == 0:
@@ -120,8 +135,9 @@ class Inference():
                     'lower_lip': 13
                 }
                 parts = [table['hair'], table['upper_lip'], table['lower_lip']]  # 修改部位
-                colors = [[230, 50, 20], [20, 70, 180], [20, 70, 180]]  # 目标颜色
-                # colors = [[255, 255, 255], [20, 70, 180], [20, 70, 180]]  # 目标颜色
+                # parts = [table['upper_lip'], table['lower_lip']]  # 修改部位
+                colors = [[155, 20, 20], [150, 80, 180], [150, 80, 180]]  # 目标颜色
+                # colors = [[20, 70, 180], [20, 70, 180], [20, 70, 180]]  # 目标颜色
 
                 for part, color in zip(parts, colors):
                     image_BGR = self.hair(image_BGR, parsing, part, color)
