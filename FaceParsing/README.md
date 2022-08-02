@@ -11,14 +11,17 @@
 <td><img src="results/qiushuzhen_mode1.png" height="256" width="256" alt="Original Input"></td>
 <td><img src="results/qiushuzhen_mode2.png" height="256" width="256" alt="Original Input"></td>
 </tr>
+
 # 2. 环境配置
 1. 在win10 + torch1.8.0 + python3.6环境下测试
 2. 安装依赖: pip install -r requirements.txt
+
 # 3. 代码说明
 1. torch2onnx.py -- 将模型转为onnx模型
     python torch2onnx.py
     - 将在原模型下导出相同名称的onnx模型
 <br/>
+
 2. test_image.py -- 图片级别的测试
     python test_image.py --device 'cpu' --mode 0 --path [your_img_path] --use_onnx False
     - device: 使用cpu或cuda，默认cpu
@@ -28,12 +31,14 @@
     - 使用方式：在输入图片的路径下产生口红图：
     python --mode 2 --path [your_img_path]
 <br/>    
+
 3. test_video.py -- 实时视频，调用摄像头检测
     python test_video.py --device 'cpu' --mode 0 --use_onnx False
     - device: 使用cpu或cuda，默认cpu
     - mode: 测试模式 0为上色; 1为上色后与原图叠加显示; 2为上口红， 默认0
     - use_onnx: 是否使用onnx模型，默认False
 <br/>
+
 4. 转模型推理(仅计算推理时间，不包括数据处理)时间粗略对比:
 
     - 图片级别对比, CPU-i表示使用CPU测试i张图片的时间
