@@ -3,7 +3,11 @@
 
 dlib相关权重文件:[百度云](https://pan.baidu.com/s/1MgPKsW8xYR1y5nqy4ccEuw) **提取码：xyca**
 
-**2022/08/01**  face parsing
-使用模型以及部分数据处理：[face-makeup](https://github.com/zllrunning/face-makeup.PyTorch.git)
-模型权重文件以及onnx模型:[百度云](https://pan.baidu.com/s/1MgPKsW8xYR1y5nqy4ccEuw) **提取码：xyca**
+## Face Parsing
+    对人脸的各个部分进行分割。
+<img src="./FaceParsing/results/qiushuzhen.png" height="256" width="256" alt="Original Input">
+<img src="./FaceParsing/results/qiushuzhen_mode0.png" height="256" width="256" alt="Original Input">
+<img src="./FaceParsing/results/qiushuzhen_mode1.png" height="256" width="256" alt="Original Input">
+<img src="./FaceParsing/results/qiushuzhen_mode2.png" height="256" width="256" alt="Original Input">
+
 # 人体姿态-标注躯干，设置全黑， 得到躯干视频

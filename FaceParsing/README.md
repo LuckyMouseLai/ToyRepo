@@ -5,12 +5,10 @@
 **提取码：xyca**<br/>
 重新训练模型，请查看[face-makeup](https://github.com/zllrunning/face-makeup.PyTorch)<br/>
 本文使用上述模型进行人脸解析测试(对人脸各个部位上色，上口红)，包括单张图片和实时视频的测试, 结果如下图。
-<tr>
-<td><img src="results/qiushuzhen.png" height="256" width="256" alt="Original Input"></td>
-<td><img src="results/qiushuzhen_mode0.png" height="256" width="256" alt="Original Input"></td>
-<td><img src="results/qiushuzhen_mode1.png" height="256" width="256" alt="Original Input"></td>
-<td><img src="results/qiushuzhen_mode2.png" height="256" width="256" alt="Original Input"></td>
-</tr>
+<img src="results/qiushuzhen.png" height="256" width="256" alt="Original Input">
+<img src="results/qiushuzhen_mode0.png" height="256" width="256" alt="Original Input">
+<img src="results/qiushuzhen_mode1.png" height="256" width="256" alt="Original Input">
+<img src="results/qiushuzhen_mode2.png" height="256" width="256" alt="Original Input">
 
 # 2. 环境配置
 1. 在win10 + torch1.8.0 + python3.6环境下测试
