@@ -1,7 +1,7 @@
 # Face Parsing
 # 1. 模型
 使用模型以及部分数据处理：[face-makeup](https://github.com/zllrunning/face-makeup.PyTorch)<br/>
-将模型放于FaceParsing/checkpoints/目录下，torch和onnx模型:[百度云](https://pan.baidu.com/s/1MgPKsW8xYR1y5nqy4ccEuw)
+将模型放于FaceParsing/checkpoints/目录下，torch和onnx模型:[百度云](https://pan.baidu.com/s/1mD1ORh4TfWZsjcpZCoFDlg)
 **提取码：xyca**<br/>
 重新训练模型，请查看[face-makeup](https://github.com/zllrunning/face-makeup.PyTorch)<br/>
 本文使用上述模型进行人脸解析测试(对人脸各个部位上色，上口红)，包括单张图片和实时视频的测试, 结果如下图。
