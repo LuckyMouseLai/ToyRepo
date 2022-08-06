@@ -1,7 +1,7 @@
 # 玩具工厂
 **2022/01/17**  dlib人脸识别
 
-dlib相关权重文件:[百度云](https://pan.baidu.com/s/1MgPKsW8xYR1y5nqy4ccEuw) **提取码：xyca**
+dlib相关权重文件:[百度云](https://pan.baidu.com/s/1mD1ORh4TfWZsjcpZCoFDlg) **提取码：xyca**
 
 ## Face Parsing
 对人脸的各个部分进行分割。
