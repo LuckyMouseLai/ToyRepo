@@ -35,7 +35,7 @@
                    'teddy bear', 'hair drier', 'toothbrush')
 # 4. 代码说明
 
-1. pred_image.py -- 图片级别的目标
+1. pred_image.py -- 图片级别的目标检测
     python .\pred_image.py --model_number 0 --device 'cpu' --score_threshold 0.5 --image_path './images/003123.jpg'
     - model_number: 使用的模型, [0,1,2,3]，默认0。需要将相应的权重文件放到./checkpoints文件夹下
         - 0：backbone-VGG image size-300 train on: voc
