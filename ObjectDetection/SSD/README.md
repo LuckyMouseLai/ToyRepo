@@ -50,7 +50,7 @@
 <br/>    
 
 2. pred_video.py -- 实时目标检测，调用摄像头检测
-    python pred_video.py --model_number 0 --device 'cuda' --mode 0 --use_onnx False
+    python pred_video.py --model_number 0 --device 'cuda' --mode 0 
     - model_number: 使用的模型, [0,1,2,3]，默认0。需要将相应的权重文件放到./checkpoints文件夹下
         - 0：backbone-VGG image size-300 train on: voc  class_number: 21
         - 1：backbone-VGG image size-512 train on: voc  class_number: 21
@@ -65,6 +65,13 @@
         - vgg_ssd512_coco_trainval35k.pth模型实时结果：3060显卡实时fps 15 fps
         - 前三个检测效果较差，很多东西检测不到，第4个好一些，可能检测环境跟训练数据集相差比较大, 调整阈值可能会有更好的结果, 4个实时不会有明显的卡顿。
 <br/>
+
+3. gradio_video_demo.py -- gradio可视化部署
+    - 运行可在浏览器可视化应用查看demo
+    - 输入为视频，将结果保存为temp.mp4在该目录下
+    ```
+    python gradio_video_demo.py
+    ```
 
 
 
