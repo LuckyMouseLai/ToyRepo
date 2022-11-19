@@ -5,8 +5,8 @@ import cv2
 from predictor import Predictor
 
 def get_parser():
-    parser = argparse.ArgumentParser(description="SSD image inference demo")
-    parser.add_argument("--device", type=str, default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+    parser = argparse.ArgumentParser(description="YOLOv7 image inference demo")
+    parser.add_argument("--device", type=str, default='cpu', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument("--conf_threshold", type=float, default=0.25)
     parser.add_argument("--iou_threshold", type=float, default=0.45)
     parser.add_argument("--image_path", default='./horses.jpg', type=str, help='Specify a image path to do prediction.')

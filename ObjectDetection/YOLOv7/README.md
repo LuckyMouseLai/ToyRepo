@@ -7,7 +7,7 @@
 
 
 # 2. 环境配置
-1. 在win10 + torch1.8.0 + python3.6环境下测试
+1. 在win10 + torch1.8.0 + python3.7环境下测试, gradio demo需要py3.7+。
 2. 安装依赖: pip install -r requirements.txt
 
 # 3. 检测类别
@@ -36,6 +36,25 @@
     - 实时检测粗略测试
         - yolov7.pt模型实时结果：3060显卡-实时fps 22 fps
         - yolov7.pt模型实时结果：cpu-不支持实时
+<br/>
+
+3. torch2onnx.py -- 将模型转为onnx模型
+    python torch2onnx.py
+    - 将在原模型下导出相同名称的onnx模型
+    - 注意使用dynamic_axes使用动态输入
+<br/>
+
+4. detect_img_by_onnx.py和detect_video_by_onnx.py
+    - 使用onnx推理，速度更快。
+<br/>
+
+5. gradio_video_demo.py -- gradio可视化部署
+    - 运行可在浏览器可视化应用查看demo
+    - 输入为视频，将结果保存为temp.mp4在该目录下
+    ```
+    python gradio_image_demo.py
+    ```
+<img src="./pics/gradio_demo.png">
 <br/>
 
 
