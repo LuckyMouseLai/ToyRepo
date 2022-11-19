@@ -21,7 +21,7 @@ class Inference():
             self.session = onnxruntime.InferenceSession('./checkpoints/79999_iter.onnx', providers=['CUDAExecutionProvider'])
 
         self.model = BiSeNet(n_classes=19).to(self.device)
-        self.model.load_state_dict(torch.load('./checkpoints/79999_iter.pth'))
+        self.model.load_state_dict(torch.load('./checkpoints/79999_iter.pth', map_location=device))
         self.to_tensor = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),

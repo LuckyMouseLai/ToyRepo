@@ -9,7 +9,7 @@
 <br/>
 <img src="results/qiushuzhen_mode1.png" height="256" width="256" alt="Original Input"><img src="results/qiushuzhen_mode2.png" height="256" width="256" alt="Original Input">
 # 2. 环境配置
-1. 在win10 + torch1.8.0 + python3.6环境下测试
+1. 在win10 + torch1.8.0 + python3.7环境下测试, gradio demo需要py3.7+。
 2. 安装依赖: pip install -r requirements.txt
 
 # 3. 代码说明
@@ -51,6 +51,12 @@
         |video-mode-1-cpu|4 fps|7 fps|
         |video-mode-2-gpu|5.5 fps ms|5.5 fps|
         |video-mode-2-cpu|3 fps|4.5 fps|
+
+5. gradio_image_demo.py -- gradio可视化部署
+    - 运行可在浏览器可视化应用查看demo
+    ```
+    python gradio_image_demo.py
+    ```
 
 
 

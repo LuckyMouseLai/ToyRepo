@@ -4,7 +4,7 @@ import os
 from network import BiSeNet
 
 device = torch.device('cpu')
-modelpath = '../../checkpoints/79999_iter.pth'
+modelpath = './checkpoints/79999_iter.pth'
 model = BiSeNet(n_classes=19).to(device)
 model.load_state_dict(torch.load(modelpath), strict=False)
 input_names = ['input_0']
