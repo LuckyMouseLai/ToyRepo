@@ -13,3 +13,9 @@
 ## 2.Objection Detection
 ### 2.1 SSD
 利用SSD算法进行图片级目标检测和实时调用摄像头进行目标检测
+### 2.2 YOLO v7
+利用YOLO v7法进行图片级目标检测和实时调用摄像头进行目标检测
+<img src="./ObjectDetection/YOLOv7/pics/gradio_demo.png" alt="Original Input">
+## 3.Anime2Sketch
+图像转轮廓描绘小demo
+<img src="./Anime2Sketch/images/abcd.gif" alt="Original Input"><img src="./Anime2Sketch/images/abcd_sketch.gif" alt="Original Input">
